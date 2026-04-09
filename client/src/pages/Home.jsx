@@ -2,7 +2,7 @@
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
 import VideoGrid from "../components/VideoGrid";
-
+import Footer from "../components/Footer";
 const Home = () => {
   return (
     <>
@@ -11,6 +11,7 @@ const Home = () => {
         <Sidebar />
         <VideoGrid />
       </div>
+      <Footer />
     </>
   );
 };

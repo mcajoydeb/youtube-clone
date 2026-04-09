@@ -1,24 +1,33 @@
-// components/VideoGrid.jsx
-import VideoCard from "./VideoCard";
+import { useNavigate } from "react-router-dom";
 
-const videos = [
-  {
-    id: "1",
-    title: "Learn React",
-    thumbnail: "https://via.placeholder.com/200",
-    channel: "Code",
-    views: "10K",
-  },
-];
+const VideoCard = ({ video }) => {
+  const navigate = useNavigate();
 
-const VideoGrid = () => {
   return (
-    <div style={{ display: "flex", flexWrap: "wrap", gap: "20px", padding: "20px" }}>
-      {videos.map((v) => (
-        <VideoCard key={v.id} video={v} />
-      ))}
+    <div
+      onClick={() => navigate(`/video/${video._id}`)}
+      className="cursor-pointer"
+    >
+      <img
+        src={video?.thumbnailUrl}
+        className="w-full rounded-lg"
+      />
+
+      <div className="mt-2 text-white">
+        <h3 className="font-semibold text-sm line-clamp-2">
+          {video?.title}
+        </h3>
+
+        <p className="text-gray-400 text-xs">
+          {video?.channelName}
+        </p>
+
+        <p className="text-gray-400 text-xs">
+          {video?.views} views
+        </p>
+      </div>
     </div>
   );
 };
 
-export default VideoGrid;
+export default VideoCard;

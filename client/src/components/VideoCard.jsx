@@ -1,20 +1,29 @@
-// components/VideoCard.jsx
 import { useNavigate } from "react-router-dom";
 
 const VideoCard = ({ video }) => {
-  const navigate = useNavigate();
+  if (!video) return null;
 
   return (
-    <div onClick={() => navigate(`/video/${video.id}`)} style={{ cursor: "pointer", width: "200px" }}>
-      
-      <img src={video.thumbnail} width="100%" />
+    <div className="cursor-pointer">
+      <img
+        src={video?.thumbnailUrl || "https://via.placeholder.com/300"}
+        alt="thumbnail"
+        className="w-full rounded-lg"
+      />
 
-      <h4>{video.title}</h4>
-      <p>{video.channel}</p>
-      <p>{video.views} views</p>
+      <div className="mt-2 text-white">
+        <h3 className="font-semibold text-sm">
+          {video?.title || "No Title"}
+        </h3>
 
+        <p className="text-gray-400 text-xs">
+          {video?.channelName || "Unknown"}
+        </p>
+
+        <p className="text-gray-400 text-xs">
+          {video?.views || 0} views
+        </p>
+      </div>
     </div>
   );
 };
-
-export default VideoCard;
